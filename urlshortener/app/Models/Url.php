@@ -12,5 +12,17 @@ class Url extends Model
     public $timestamps = false;
 
     protected $fillable = ['url', 'shortened'];
+
+   public static function getUniqueShortener()
+ {
+    $shortened = Str::random(5);
+
+    if(static::where('shortened')->count() > 0){
+        return static::getUniqueShortener();
+    }
+
+    return  $shortened;
+  }
+
     
 }

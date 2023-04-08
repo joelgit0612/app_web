@@ -37,7 +37,7 @@ Route::post('/', function () {
   }
   //Creer une nouvelle short et la retourner
 
-  function get_unique_short_url()
+ /* function get_unique_short_url()
   {
     $shortened = Str::random(5);
 
@@ -46,11 +46,11 @@ Route::post('/', function () {
     }
 
     return  $shortened;
-  }
+  }*/
 
    $new_url = Url::create([
     'url' => request('url'),
-    'shortened' => get_unique_short_url(),
+    'shortened' => getUniqueShortener(),
    ]);
 
    if($new_url){
