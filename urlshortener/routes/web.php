@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UrlsController;
 
 use App\models\Url;
 
@@ -15,12 +16,16 @@ use App\models\Url;
 |
 */
 
-Route::get('/', function () {
+Route::get('/user/{id}', [UrlsController::class, 'create']);
+
+ /*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 
-Route::post('/', function () {
+Route::get('/user/{id}', [UrlsController::class, 'store']);
+
+ /*Route::post('/', function () {
    $url = request('url');
   // Valider l'url
   Validator::make(compact('url'), 
@@ -37,7 +42,7 @@ Route::post('/', function () {
   }
   //Creer une nouvelle short et la retourner
 
- /* function get_unique_short_url()
+  function get_unique_short_url()
   {
     $shortened = Str::random(5);
 
@@ -46,7 +51,7 @@ Route::post('/', function () {
     }
 
     return  $shortened;
-  }*/
+  }
 
    $new_url = Url::create([
     'url' => request('url'),
@@ -55,16 +60,19 @@ Route::post('/', function () {
 
    if($new_url){
     return view('result')->with('shortened', $new_url->shortened);
-   }
-  //Felicitation voici l'url raccourcie
-});
+   
+  
+});*/
 
 // Redirection vers l'url original
-Route::get('/{shortened}', function ($shortened) {
+
+Route::get('/user/{id}', [UrlsController::class, 'show']);
+
+ /*Route::get('/{shortened}', function ($shortened) {
     $url = Url::where('shortened', $shortened)->first();
 
     if(! $url){
         return redirect('/');
     }
     return redirect($url->url);
-});
+});*/
