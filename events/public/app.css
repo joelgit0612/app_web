@@ -1,0 +1,8 @@
+body{
+    background-color: aliceblue;
+    padding-left: 60px;
+}
+
+.inline-block{
+    display: inline-block;
+}
